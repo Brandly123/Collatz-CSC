@@ -19,23 +19,22 @@ function collatzStep() {
 
     if(stressamount > 2){
         ip *= 1.005;
-    } else if(timeCheck > 25){
+    } else if(timeCheck > 20){
         ip += 1;
         ip *= 1.02;
     } else {
         ip += 1;
-        ip *= 1.05;
+        ip *= 1.1;
     }
     stressamount++;
-    if (tickdelay > 0 || (timeCheck <= 30 + done*40 && done <= 1)) stressamount --;
+    if (tickdelay > 0 || (timeCheck <= 30 + done*10 && done <= 1)) stressamount --;
     if (stressamount < 10) {
         document.getElementById("calculated").innerHTML = 
-            `#${done+1}: ${timeCheck.toFixed(2)}ms/${30 + done*40}ms stress; stress magnitude of ${Math.log10(ip ** 0.75).toFixed(2)} (exceeded stress frames: ${stressamount}/10)`;
+            `#${done+1}: ${timeCheck.toFixed(2)}ms/${30 + done*10}ms stress; stress magnitude of ${Math.log10(ip ** 0.75).toFixed(2)} (exceeded stress frames: ${stressamount}/10)`;
     } else {
         stressamount = 0;
-            best += ip;
-            done += 1;
-        ip /= 2;
+        best += ip;
+        done += 1;
         tickdelay = 2;
 
         document.getElementById("calculated").innerHTML = 
