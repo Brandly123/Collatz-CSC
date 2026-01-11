@@ -19,7 +19,8 @@ function collatzStep() {
 
     if(stressamount > 2){
         ip *= 1.005;
-    } else if(timeCheck > 20){
+    } else if(timeCheck > 25){
+        ip += 1;
         ip *= 1.02;
     } else {
         ip += 1;
