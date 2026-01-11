@@ -17,13 +17,13 @@ function collatzStep() {
     start = performance.now();
     tickdelay --;
 
-    if(timeCheck > 40 || stressamount){
-        ip *= 1.001;
+    if(stressamount > 2){
+        ip *= 1.005;
     } else if(timeCheck > 20){
-        ip *= 1.01;
+        ip *= 1.02;
     } else {
         ip += 1;
-        ip *= 1.03;
+        ip *= 1.05;
     }
     stressamount++;
     if (tickdelay > 0 || (timeCheck <= 30 + done*40 && done <= 1)) stressamount --;
