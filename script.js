@@ -2,7 +2,7 @@
 
 let calcx = 3;
 let start = performance.now();
-let ip = 1000;
+let ip = 10000;
 let done = 0;
 
 let best = 0;
@@ -20,17 +20,15 @@ function collatzStep() {
     if(stressamount > 2){
         ip *= 1.005;
     } else if(timeCheck > 20){
-        ip += 1;
         ip *= 1.02;
     } else {
-        ip += 1;
         ip *= 1.1;
     }
     stressamount++;
-    if (tickdelay > 0 || (timeCheck <= 30 + done*10 && done <= 1)) stressamount --;
+    if (tickdelay > 0 || (timeCheck <= 40 && !done)) stressamount --;
     if (stressamount < 10) {
         document.getElementById("calculated").innerHTML = 
-            `#${done+1}: ${timeCheck.toFixed(2)}ms/${30 + done*10}ms stress; stress magnitude of ${Math.log10(ip ** 0.75).toFixed(2)} (exceeded stress frames: ${stressamount}/10)`;
+            `${timeCheck.toFixed(2)}ms/40ms stress; stress magnitude of ${Math.log10(ip ** 0.7).toFixed(2)} (exceeded stress frames: ${stressamount}/10)`;
     } else {
         stressamount = 0;
         best += ip;
